@@ -1,0 +1,13 @@
+<ruleset name="DreipcCodingStandard">
+
+    <description>The Dreipc coding standard.</description>
+
+    <rule ref="PSR2" />
+
+    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+        <severity>0</severity>
+    </rule>
+    <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+</ruleset>

@@ -1,0 +1,53 @@
+{
+    "name": "eddiriarte/lazzier",
+    "description": "Simple console application to perform configurable release installations and rollbacks.",
+    "keywords": ["framework", "laravel", "console", "zero"],
+    "homepage": "http://laravel-zero.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eduardo Iriarte-Mendez",
+            "email": "eiriarte@3pc.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "eddiriarte/console-select": "dev-master",
+        "laravel-zero/framework": "4.0.*",
+        "symfony/yaml": "^4.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "pdepend/pdepend": "^2.5",
+        "php-mock/php-mock-phpunit": "^2.0",
+        "phploc/phploc": "^4.0",
+        "phpmd/phpmd": "^2.6",
+        "phpunit/php-code-coverage": "^5.3",
+        "phpunit/phpunit": "6.4",
+        "sebastian/phpcpd": "^3.0",
+        "sensiolabs/security-checker": "^4.1",
+        "squizlabs/php_codesniffer": "^3.2",
+        "symfony/thanks": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lazzier\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "php lazzier app:rename"
+        ]
+    },
+    "bin": ["lazzier"]
+}

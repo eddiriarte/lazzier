@@ -1,0 +1,45 @@
+root_dir: '/var/www'
+
+release_link: '/var/www/current'
+
+releases_dir: '/var/www/releases'
+
+package_format: 'tar+gz' # 'zip', 'tar'
+
+install:
+  before:
+    - ArtisanDown
+    - task: CopyFile
+      args: 
+        source: test.txt
+        target: new.txt
+    - 'echo "Good Bye, World!"'
+  after:
+    - ArtisanUp
+    - 'echo "Hello World!"'
+  schedule:
+    - unpack_artifact
+    - copy_files:
+      - source: 'var/private/db-settings.php'
+        target: 'config/db.php'
+    - link_files:
+      - source: 'var/private/db-settings.php'
+        target: 'config/db.php'
+    - share_dirs:
+      - source: '/var/www/shared/images'
+        target: 'images'
+      - source: '/var/www/shared/logs'
+        target: 'logs'
+    - make_dirs:
+      - target: 'cache'
+    - customs:
+      - 'echo "foo bar baz!"'
+
+uninstall:
+  before:
+    - task: 'ArtisanDown'
+    - 'echo "Good Bye, World!"'
+  after:
+    - 'ArtisanUp'
+    - 'echo "Hello World!"'
+
